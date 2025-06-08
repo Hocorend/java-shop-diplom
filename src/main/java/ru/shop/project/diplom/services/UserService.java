@@ -25,15 +25,16 @@ public class UserService {
 
     @Transactional
     public void addDeposit(User user, int amount) {
-        userRepository.findById(user.getId())
-                .ifPresent(existingUser -> {
-                    existingUser.setDeposit(existingUser.getDeposit() + amount);
-                    userRepository.save(existingUser);
-                });
+        user.setDeposit(user.getDeposit() + amount);
     }
 
     public User findByLogin(String login) {
         return userRepository.findByLogin(login)
                 .orElseThrow(() -> new RuntimeException("User not found with login: " + login));
+    }
+
+    @Transactional
+    public void updateFunds(User user) {
+        userRepository.updateById(user);
     }
 }
