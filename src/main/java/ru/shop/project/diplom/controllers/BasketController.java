@@ -53,8 +53,8 @@ public class BasketController {
         User user = userService.findByLogin(UserLogin);
 
         if (user != null) {
-            int totalPrice = basketService.getTotalPrice(user);
-            if (totalPrice == 0) {
+            Integer totalPrice = basketService.getTotalPrice(user);
+            if (totalPrice == null) {
                 return new ResponseEntity<>(new DefaultMessageResponse("Your basket is empty"), HttpStatus.BAD_REQUEST);
             }
 

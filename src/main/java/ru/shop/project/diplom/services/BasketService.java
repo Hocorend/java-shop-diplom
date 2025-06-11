@@ -32,7 +32,7 @@ public class BasketService {
         }
     }
 
-    public int getTotalPrice(User user) {
+    public Integer getTotalPrice(User user) {
         return basketRepository.getTotalPrice(user);
     }
 

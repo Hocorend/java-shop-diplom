@@ -23,7 +23,7 @@ public interface BasketRepository extends JpaRepository<Basket, Integer> {
 
 
     @Query("SELECT SUM(b.count * b.product.cost) FROM Basket b WHERE b.user = :user")
-    public int getTotalPrice(User user);
+    public Integer getTotalPrice(User user);
 
     @Modifying
     @Query("DELETE FROM Basket b WHERE b.user = :user")
